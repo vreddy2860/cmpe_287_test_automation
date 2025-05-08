@@ -1,36 +1,103 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Java Syntax Testing Platform
+
+A web-based platform for testing and comparing Java syntax explanations using Large Language Models (LLMs). This project aims to provide consistent and accurate Java programming language explanations by comparing responses from multiple LLM instances.
+
+## Features
+
+### Test Categories
+1. **Lexical Syntax**
+   - Valid identifiers in Java
+   - Java comments syntax
+
+2. **Control Flow**
+   - If-else statement syntax
+   - For loop implementation
+
+3. **Class and Method Structure**
+   - Class declaration syntax
+   - Method definition guidelines
+
+4. **Data Types and Variables**
+   - Primitive data types
+   - Variable declaration rules
+
+### Key Features
+- Side-by-side comparison of responses from two LLM instances
+- Individual test case execution
+- Real-time response validation
+- Modern, responsive UI with dark theme
+- Clear pass/fail indicators for each test
+
+## Technology Stack
+
+- **Frontend**: Next.js 14 with App Router
+- **Styling**: Tailwind CSS
+- **API Integration**: Meta's Llama API
+- **State Management**: React Hooks
+- **HTTP Client**: Axios
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+- Node.js 18.17 or later
+- Meta Llama API access
 
+### Environment Setup
+1. Clone the repository
+2. Create a `.env.local` file with your API key:
+   ```env
+   DEEPSEEK_API_KEY=your_llama_api_key
+   ```
+
+### Installation
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3001](http://localhost:3001) to view the application.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/
+├── app/
+│   ├── api/
+│   │   └── test/         # API endpoints
+│   ├── tests/
+│   │   └── [sectionId]/  # Dynamic test pages
+│   └── page.tsx          # Main dashboard
+├── components/           # Reusable components
+└── styles/              # Global styles
+```
 
-## Learn More
+## API Integration
 
-To learn more about Next.js, take a look at the following resources:
+The platform uses two instances of the Llama API with different prompting strategies:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. **First Instance**
+   - Role: Java Expert
+   - Temperature: 0.7
+   - Focused on detailed, accurate responses
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+2. **Second Instance**
+   - Role: Java Instructor
+   - Temperature: 0.8
+   - Emphasizes clear, educational explanations
 
-## Deploy on Vercel
+## Testing Methodology
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Each test case is run against both LLM instances
+2. Responses are compared for consistency
+3. Tests pass when both instances provide valid responses
+4. Results show side-by-side comparisons for analysis
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Submit a pull request
+
+## License
+
+MIT License - See LICENSE file for details
